@@ -229,7 +229,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-12-02 17:35:28" itemprop="dateModified" datetime="2021-12-02T17:35:28+08:00">2021-12-02</time>
+        <time title="修改时间：2021-12-02 20:58:56" itemprop="dateModified" datetime="2021-12-02T20:58:56+08:00">2021-12-02</time>
       </span>
 
   
@@ -299,7 +299,140 @@
 <p><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;cssfile.css&quot;&gt;</code></p>
 </blockquote>
 <h1 id="3-body标签介绍"><a href="#3-body标签介绍" class="headerlink" title="3 body标签介绍"></a>3 body标签介绍</h1><p>body标签用于装载页面的主体内容，比如文本、链接、图像、表格等，下面分类介绍一些body中常用的标签。</p>
-<h2 id="3-1-排版标签"><a href="#3-1-排版标签" class="headerlink" title="3.1 排版标签"></a>3.1 排版标签</h2><h2 id="3-2-文本格式化标签"><a href="#3-2-文本格式化标签" class="headerlink" title="3.2 文本格式化标签"></a>3.2 文本格式化标签</h2><h2 id="3-3-图像标签"><a href="#3-3-图像标签" class="headerlink" title="3.3 图像标签"></a>3.3 图像标签</h2>
+<h2 id="3-1-排版标签"><a href="#3-1-排版标签" class="headerlink" title="3.1 排版标签"></a>3.1 排版标签</h2><p>排版标签主要和CSS搭配使用，显示网页结构的标签，是网页布局最常用的标签。</p>
+<h3 id="3-1-1-标题标签"><a href="#3-1-1-标题标签" class="headerlink" title="3.1.1 标题标签"></a>3.1.1 标题标签</h3><p>HTML中有六级标题，分别对应<code>&lt;h1&gt;&lt;/h1&gt;</code>到<code>&lt;h6&gt;&lt;/h6&gt;</code>，加了标题标签的字体加粗变大，效果如下</p>
+<table>
+<thead>
+<tr>
+<th align="center">例子</th>
+<th align="center">效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>&lt;h1&gt;一级标题&lt;/h1&gt;</code></td>
+<td align="center"><h1>一级标题</h1></td>
+</tr>
+<tr>
+<td align="center"><code>&lt;h2&gt;二级标题&lt;/h2&gt;</code></td>
+<td align="center"><h2>二级标题</h2></td>
+</tr>
+<tr>
+<td align="center"><code>&lt;h3&gt;三级标题&lt;/h3&gt;</code></td>
+<td align="center"><h3>三级标题</h3></td>
+</tr>
+<tr>
+<td align="center"><code>&lt;h4&gt;四级标题&lt;/h4&gt;</code></td>
+<td align="center"><h4>四级标题</h4></td>
+</tr>
+<tr>
+<td align="center"><code>&lt;h5&gt;五级标题&lt;/h5&gt;</code></td>
+<td align="center"><h5>五级标题</h5></td>
+</tr>
+<tr>
+<td align="center"><code>&lt;h6&gt;六级标题&lt;/h6&gt;</code></td>
+<td align="center"><h6>六级标题</h6></td>
+</tr>
+<tr>
+<td align="center">标题一行只能放一个，原因会在后面CSS的章节再统一讲述。</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h3 id="3-1-2-段落标签"><a href="#3-1-2-段落标签" class="headerlink" title="3.1.2 段落标签"></a>3.1.2 段落标签</h3><p>段落标签<code>&lt;p&gt;&lt;/p&gt;</code>可以把HTML文档分割为若干个段落，效果如下</p>
+<blockquote>
+<p><code>&lt;p&gt;这是段落一&lt;/p&gt;&lt;p&gt;段落二&lt;/p&gt;</code></p>
+<p>这是段落一</p><p>段落二</p>
+</blockquote>
+<p>默认情况下，文本在一个段落中会根据浏览器窗口大小自动换行。段落也是一行只能放一个。</p>
+<h3 id="3-1-3-水平线标签"><a href="#3-1-3-水平线标签" class="headerlink" title="3.1.3 水平线标签"></a>3.1.3 水平线标签</h3><p>水平线标签<code>&lt;hr&gt;</code>用于分割文档中的段落，使文档结构清晰，层次分明。水平线也可以通过插入图片实现。效果如下</p>
+<blockquote>
+<p>以下是分割线</p>
+</blockquote>
+<blockquote>
+<p><code>&lt;hr&gt;</code><hr><br>以上是分割线</p>
+</blockquote>
+<h3 id="3-1-4-换行标签"><a href="#3-1-4-换行标签" class="headerlink" title="3.1.4 换行标签"></a>3.1.4 换行标签</h3><p>换行标签<code>&lt;br&gt;</code>主要用于强制换行，一般情况下若不强制换行一段文字会从左到右依次排列直到父标签最右端。效果如下</p>
+<blockquote>
+<p>在本句话最后换行<code>&lt;br&gt;</code><br>在上句话最后换行</p>
+</blockquote>
+<h3 id="3-1-5-div和span标签"><a href="#3-1-5-div和span标签" class="headerlink" title="3.1.5 div和span标签"></a>3.1.5 div和span标签</h3><p><code>div</code>和<code>span</code>标签是使用最多的布局标签。<code>div</code>标签<code>&lt;div&gt;&lt;/div&gt;</code>可以把文档分割成独立、不同的部分，并且本身没有任何格式。span标签<code>&lt;span&gt;&lt;/span&gt;</code>与<code>div</code>标签基本相同，但<code>span</code>标签用在行内。<code>div</code>标签一行只能放一个，<code>span</code>标签一行能放多个。效果如下</p>
+<blockquote>
+<p><code>&lt;div&gt;这是一个div标签&lt;/div&gt;&lt;div&gt;这是另一个div标签&lt;/div&gt;</code><br><code>&lt;span&gt;这是一个span标签&lt;/span&gt;&lt;span&gt;这是另一个span标签&lt;/span&gt;</code></p>
+<div>这是一个div标签</div><div>这是另一个div标签</div>
+<span>这是一个span标签</span><span>这是另一个span标签</span>
+</blockquote>
+<h2 id="3-2-文本格式化标签"><a href="#3-2-文本格式化标签" class="headerlink" title="3.2 文本格式化标签"></a>3.2 文本格式化标签</h2><p>文本格式化标签用于给文本加修饰，比如加粗、斜体、删除线和下划线，效果如下</p>
+<table>
+<thead>
+<tr>
+<th align="center">标签</th>
+<th align="center">显示效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>&lt;b&gt;加粗&lt;/b&gt;</code>或<code>&lt;strong&gt;加粗&lt;/strong&gt;</code></td>
+<td align="center"><b>加粗</b>或<strong>加粗</strong></td>
+</tr>
+<tr>
+<td align="center"><code>&lt;i&gt;斜体&lt;/i&gt;</code>或<code>&lt;em&gt;斜体&lt;/em&gt;</code></td>
+<td align="center"><i>斜体</i>或<em>斜体</em></td>
+</tr>
+<tr>
+<td align="center"><code>&lt;s&gt;删除线&lt;/s&gt;</code>或<code>&lt;del&gt;删除线&lt;/del&gt;</code></td>
+<td align="center"><s>删除线</s>或<del>删除线</del></td>
+</tr>
+<tr>
+<td align="center"><code>&lt;u&gt;下划线&lt;/u&gt;</code>或<code>&lt;ins&gt;下划线&lt;/ins&gt;</code></td>
+<td align="center"><u>下划线</u>或<ins>下划线</ins></td>
+</tr>
+</tbody></table>
+<h2 id="3-3-图像标签"><a href="#3-3-图像标签" class="headerlink" title="3.3 图像标签"></a>3.3 图像标签</h2><p>图像标签<code>&lt;img src=&quot;image-url&quot;&gt;</code>用于显示图片，<code>src</code>属性用于指定图片的路径和文件名，该属性不能省略。图像标签常用的属性还有</p>
+<table>
+<thead>
+<tr>
+<th align="center">属性</th>
+<th align="center">值</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">src</td>
+<td align="center">url</td>
+<td align="center">图片路径</td>
+</tr>
+<tr>
+<td align="center">alt</td>
+<td align="center">文本</td>
+<td align="center">图片不能显示时的替换文本</td>
+</tr>
+<tr>
+<td align="center">title</td>
+<td align="center">文本</td>
+<td align="center">鼠标悬停时显示的内容</td>
+</tr>
+<tr>
+<td align="center">width</td>
+<td align="center">像素</td>
+<td align="center">设置图像宽度</td>
+</tr>
+<tr>
+<td align="center">height</td>
+<td align="center">像素</td>
+<td align="center">设置图像高度（设置宽高任一个另一个等比例缩放）</td>
+</tr>
+<tr>
+<td align="center">border</td>
+<td align="center">数字</td>
+<td align="center">设置图像边框宽度</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><code>alt</code>与<code>title</code>的区别</p>
+<ul>
+<li>alt是img标签的特有属性，是图片内容的等价描述，可提高图片的可访问性，搜索引擎会分析。</li>
+<li>title是鼠标悬停在图片上显示的内容。</li>
+</ul>
+</blockquote>
+<h2 id="3-4-链接标签"><a href="#3-4-链接标签" class="headerlink" title="3.4 链接标签"></a>3.4 链接标签</h2><h2 id="3-5-base标签"><a href="#3-5-base标签" class="headerlink" title="3.5 base标签"></a>3.5 base标签</h2><h2 id="3-6-预格式化文本标签"><a href="#3-6-预格式化文本标签" class="headerlink" title="3.6 预格式化文本标签"></a>3.6 预格式化文本标签</h2><h2 id="3-7-表格标签"><a href="#3-7-表格标签" class="headerlink" title="3.7 表格标签"></a>3.7 表格标签</h2><h2 id="3-8-列表标签"><a href="#3-8-列表标签" class="headerlink" title="3.8 列表标签"></a>3.8 列表标签</h2><h2 id="3-9-表单标签"><a href="#3-9-表单标签" class="headerlink" title="3.9 表单标签"></a>3.9 表单标签</h2>
       
     </div>
 
