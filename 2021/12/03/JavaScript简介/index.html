@@ -22,15 +22,15 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"jiebins.github.io","root":"/betternow.github.io/","images":"/betternow.github.io/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/betternow.github.io/js/config.js"></script>
-<meta name="description" content="&#x2F;&#x2F; 本文使用到的JavaScript代码 function sayHi() {     alert(&quot;Hi!&quot;); }   JavaScript部分的学习主要参考《Javascript高级程序设计（第四版）》一书。 1 JavaScript概述Javascript是一种具有函数优先的轻量级、解释型或及时编译型的编程语言。JavaScript由JS解释器逐行进行解释并执行。JavaScript的">
+<meta name="description" content="JavaScript部分的学习主要参考《Javascript高级程序设计（第四版）》一书。 1 JavaScript概述Javascript是一种具有函数优先的轻量级、解释型或及时编译型的编程语言。JavaScript由JS解释器逐行进行解释并执行。JavaScript的作用主要有  表单动态校验（JS最初的目的） 网页特效 服务端开发（Node.js） 桌面程序（Electron） APP（">
 <meta property="og:type" content="article">
 <meta property="og:title" content="海里睡人">
 <meta property="og:url" content="https://jiebins.github.io/betternow.github.io/2021/12/03/JavaScript%E7%AE%80%E4%BB%8B/index.html">
 <meta property="og:site_name" content="海里睡人">
-<meta property="og:description" content="&#x2F;&#x2F; 本文使用到的JavaScript代码 function sayHi() {     alert(&quot;Hi!&quot;); }   JavaScript部分的学习主要参考《Javascript高级程序设计（第四版）》一书。 1 JavaScript概述Javascript是一种具有函数优先的轻量级、解释型或及时编译型的编程语言。JavaScript由JS解释器逐行进行解释并执行。JavaScript的">
+<meta property="og:description" content="JavaScript部分的学习主要参考《Javascript高级程序设计（第四版）》一书。 1 JavaScript概述Javascript是一种具有函数优先的轻量级、解释型或及时编译型的编程语言。JavaScript由JS解释器逐行进行解释并执行。JavaScript的作用主要有  表单动态校验（JS最初的目的） 网页特效 服务端开发（Node.js） 桌面程序（Electron） APP（">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-12-03T08:01:40.719Z">
-<meta property="article:modified_time" content="2021-12-03T08:01:16.150Z">
+<meta property="article:modified_time" content="2021-12-03T09:13:22.145Z">
 <meta property="article:author" content="海里睡人">
 <meta name="twitter:card" content="summary">
 
@@ -122,7 +122,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-JavaScript%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">1 JavaScript概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-ECMAScript"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 ECMAScript</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-DOM"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 DOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-BOM"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 BOM</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-JavaScript%E7%9A%84%E5%BC%95%E5%85%A5"><span class="nav-number">2.</span> <span class="nav-text">2 JavaScript的引入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E8%A1%8C%E5%86%85%E5%BC%95%E5%85%A5"><span class="nav-number">2.0.1.</span> <span class="nav-text">2.1 行内引入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E5%86%85%E5%B5%8C%E5%BC%95%E5%85%A5"><span class="nav-number">2.1.</span> <span class="nav-text">2.2 内嵌引入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-script%E6%A0%87%E7%AD%BE"><span class="nav-number">2.1.1.</span> <span class="nav-text">2.2.1 script标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-%E5%86%85%E5%B5%8C%E5%BC%95%E5%85%A5"><span class="nav-number">2.1.2.</span> <span class="nav-text">2.2.2 内嵌引入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-%E5%A4%96%E9%83%A8%E5%BC%95%E5%85%A5"><span class="nav-number">2.2.</span> <span class="nav-text">2.3 外部引入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%A4%96%E9%83%A8%E5%BC%95%E5%85%A5%E7%9A%84%E4%B8%80%E4%BA%9B%E6%B3%A8%E6%84%8F%E7%82%B9"><span class="nav-number">2.2.1.</span> <span class="nav-text">使用外部引入的一些注意点</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-JavaScript%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">1 JavaScript概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-ECMAScript"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 ECMAScript</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-DOM"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 DOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-BOM"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 BOM</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-JavaScript%E7%9A%84%E5%BC%95%E5%85%A5"><span class="nav-number">2.</span> <span class="nav-text">2 JavaScript的引入</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E8%A1%8C%E5%86%85%E5%BC%95%E5%85%A5"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 行内引入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E5%86%85%E5%B5%8C%E5%BC%95%E5%85%A5"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 内嵌引入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-script%E6%A0%87%E7%AD%BE"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1 script标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-%E5%86%85%E5%B5%8C%E5%BC%95%E5%85%A5"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2.2 内嵌引入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-%E5%A4%96%E9%83%A8%E5%BC%95%E5%85%A5"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 外部引入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%A4%96%E9%83%A8%E5%BC%95%E5%85%A5%E7%9A%84%E4%B8%80%E4%BA%9B%E6%B3%A8%E6%84%8F%E7%82%B9"><span class="nav-number">2.3.1.</span> <span class="nav-text">使用外部引入的一些注意点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-%E6%A0%87%E7%AD%BE%E4%BD%8D%E7%BD%AE"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 标签位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-%E6%8E%A8%E8%BF%9F%E6%89%A7%E8%A1%8C%E5%92%8C%E5%BC%82%E6%AD%A5%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 推迟执行和异步执行脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B1%E5%90%8C%E7%82%B9"><span class="nav-number">2.5.1.</span> <span class="nav-text">共同点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E5%90%8C%E7%82%B9"><span class="nav-number">2.5.2.</span> <span class="nav-text">不同点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E6%B3%95"><span class="nav-number">2.5.3.</span> <span class="nav-text">用法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E8%84%9A%E6%9C%AC"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 动态加载脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-7-lt-noscript-gt-%E6%A0%87%E7%AD%BE"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 &lt;noscript&gt;标签</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -227,7 +227,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2021-12-03 16:01:40 / 修改时间：16:01:16" itemprop="dateCreated datePublished" datetime="2021-12-03T16:01:40+08:00">2021-12-03</time>
+      <time title="创建时间：2021-12-03 16:01:40 / 修改时间：17:13:22" itemprop="dateCreated datePublished" datetime="2021-12-03T16:01:40+08:00">2021-12-03</time>
     </span>
 
   
@@ -240,12 +240,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <script>
-// 本文使用到的JavaScript代码
-function sayHi() {
-    alert("Hi!");
-}
-</script>
+        <script type="text/javascript" src="/betternow.github.io/js/markdownjs/jsabstract.js"></script>
 
 <p>JavaScript部分的学习主要参考《Javascript高级程序设计（第四版）》一书。</p>
 <h1 id="1-JavaScript概述"><a href="#1-JavaScript概述" class="headerlink" title="1 JavaScript概述"></a>1 JavaScript概述</h1><p>Javascript是一种具有函数优先的轻量级、解释型或及时编译型的编程语言。JavaScript由JS解释器逐行进行解释并执行。JavaScript的作用主要有</p>
@@ -328,7 +323,7 @@ function sayHi() {
 <li>其他自定义对象，比如XMLHttpRequest</li>
 </ul>
 <h1 id="2-JavaScript的引入"><a href="#2-JavaScript的引入" class="headerlink" title="2 JavaScript的引入"></a>2 JavaScript的引入</h1><p>在HTML文档中引入JavaScript脚本主要有三种方式：行内引入、内嵌引入和外部引入。</p>
-<h3 id="2-1-行内引入"><a href="#2-1-行内引入" class="headerlink" title="2.1 行内引入"></a>2.1 行内引入</h3><p>行内引入即将单行或少量JavaScript代码写在HTML标签的事件属性中，比如</p>
+<h2 id="2-1-行内引入"><a href="#2-1-行内引入" class="headerlink" title="2.1 行内引入"></a>2.1 行内引入</h2><p>行内引入即将单行或少量JavaScript代码写在HTML标签的事件属性中，比如</p>
 <blockquote>
 <p><code>&lt;button onclick=&quot;alert(&#39;这是弹框&#39;)&quot;&gt;点我弹框&lt;/button&gt;</code></p>
 <p><button onclick="alert('这是弹框')">点我弹框</button></p>
@@ -377,6 +372,65 @@ function sayHi() &#123;
 <li>若<code>&lt;script&gt;</code>标签都没有使用<code>defer</code>或<code>async</code>属性，那么浏览器会按照它们在页面中出现的顺序依次解释，后一个标签必须在前一个标签解释完后才能开始解释。</li>
 </ul>
 </blockquote>
+<h2 id="2-4-标签位置"><a href="#2-4-标签位置" class="headerlink" title="2.4 标签位置"></a>2.4 标签位置</h2><p><code>&lt;script&gt;</code>标签可以放在<code>&lt;head&gt;</code>标签中，也可以放在<code>&lt;body&gt;</code>标签中。如果把<code>&lt;script&gt;</code>标签全都放在<code>&lt;head&gt;</code>标签中，就意味着必须把所有JavaScript代码都解释完成后才能开始渲染页面，对于需要很多JavaScript文件的页面来说这会导致渲染明显延迟，在解释期间页面完全空白。因此，应该把所有JavaScript引用都放在<code>&lt;body&gt;</code>标签页面内容的后面，页面会在处理JavaScript代码之前完全渲染页面，即</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;title&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;!--页面内容--&gt;
+        &lt;script src=&quot;example.js&quot;&gt;&lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id="2-5-推迟执行和异步执行脚本"><a href="#2-5-推迟执行和异步执行脚本" class="headerlink" title="2.5 推迟执行和异步执行脚本"></a>2.5 推迟执行和异步执行脚本</h2><p>前面提到<code>&lt;script&gt;</code>标签有<code>defer</code>和<code>async</code>两个属性，两者的共同点与区别如下</p>
+<h3 id="共同点"><a href="#共同点" class="headerlink" title="共同点"></a>共同点</h3><table>
+<tr>
+    <td>属性</td>
+    <td>共同点</td>
+</tr>
+<tr>
+    <td>defer</td>
+    <td rowspan=2>只对外部脚本有效</td>
+</tr>
+<tr>
+    <td>async</td>
+</tr>
+</table>
+
+<h3 id="不同点"><a href="#不同点" class="headerlink" title="不同点"></a>不同点</h3><table>
+<tr>
+    <td>属性</td>
+    <td>特点</td>
+</tr>
+<tr>
+    <td>defer</td>
+    <td>后一个推迟的脚本依然会在前一个推迟的脚本执行之后执行，但实际上也不一定会按顺序执行，因此最好只包含一个defer脚本。</td>
+</tr>
+<tr>
+    <td>async</td>
+    <td>后一个脚本可以先于前一个脚本执行，脚本之间必须没有依赖关系，并且async脚本在加载期间不应该修改DOM。</td>
+</tr>
+</table>
+
+
+<h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><pre><code>&lt;script defer src=&quot;example1.js&quot;&gt;&lt;/script&gt;
+&lt;script async src=&quot;example2.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>在XHTML中使用<code>defer=&quot;defer&quot;</code>和<code>async=&quot;async&quot;</code>。</p>
+<h2 id="2-6-动态加载脚本"><a href="#2-6-动态加载脚本" class="headerlink" title="2.6 动态加载脚本"></a>2.6 动态加载脚本</h2><p>可以使用DOM动态新建<code>&lt;script&gt;</code>标签，在<code>&lt;script&gt;</code>标签中使用如下代码</p>
+<pre><code>let script = document.createElement(&#39;script&#39;);
+script.src = &#39;example.js&#39;;
+document.body.appendChild(script);
+</code></pre>
+<p>其中涉及的DOM新建元素的操作会在后面讲述。</p>
+<h2 id="2-7-lt-noscript-gt-标签"><a href="#2-7-lt-noscript-gt-标签" class="headerlink" title="2.7 &lt;noscript&gt;标签"></a>2.7 <code>&lt;noscript&gt;</code>标签</h2><p><code>&lt;noscript&gt;&lt;/noscript&gt;</code>用于给不支持JavaScript的浏览器提供替代内容，当下面两种情况出现时，浏览器将显示<code>&lt;noscript&gt;</code>标签中的内容</p>
+<ul>
+<li>浏览器不支持脚本</li>
+<li>浏览器对脚本的支持被关闭</li>
+</ul>
+<p>除上述两种情况外，浏览器不会渲染<code>&lt;noscript&gt;</code>标签中的内容。</p>
 
     </div>
 
