@@ -1635,7 +1635,7 @@ figure.highlight pre .javascript .function {
   padding-left: 0.5rem;
   width: 100%;
 }
-#article-container pre,
+/* #article-container pre,*/
 #article-container figure.highlight {
   overflow: auto;
   margin: 0 0 1rem;
@@ -1665,7 +1665,7 @@ blockquote footer cite:before {
   padding: 0 0.3em;
   content: '—';
 }
-#article-container pre,
+/* #article-container pre, */
 #article-container code {
   font-size: var(--global-font-size);
   font-family: consolas, Menlo, 'PingFang SC', 'Microsoft YaHei', sans-serif !important;
@@ -1675,10 +1675,12 @@ blockquote footer cite:before {
   background: rgba(27,31,35,0.05);
   color: #f47466;
 }
-#article-container pre {
+/* #article-container pre {
   padding: 10px 20px;
 }
-#article-container pre code {
+*/
+/* pre */
+#article-container code {
   padding: 0;
   background: none;
   color: var(--hl-color);

@@ -1,0 +1,40 @@
+.editor-field {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 45%;
+  height: 100%;
+}
+
+.content-title {
+  display: flex;
+  justify-content: space-between;
+  height: 30px;
+  width: 100%;
+  line-height: 30px;
+}
+
+.result-title {
+  height: 30px;
+  width: 100%;
+  line-height: 30px;
+}
+
+.editor,
+.result-wrapper {
+  box-sizing: border-box;
+  width: 100%;
+  height: 95%;
+}
+
+.result {
+  width: 100%;
+  height: 100%;
+}
