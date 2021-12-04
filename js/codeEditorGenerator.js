@@ -18,6 +18,8 @@ let editorFields = document.getElementsByClassName('editor-field');
 let codeEditors = []
 
 for (let i = 0; i < editorFields.length; i++) {
+  let initCode = editorFields[i].children[0].innerHTML.replace(' ', '');
+  editorFields[i].innerHTML = '';
   // 新建代码编辑器相关元素
   let contentField = document.createElement('div');
   let contentTitle = document.createElement('div');
@@ -50,7 +52,6 @@ for (let i = 0; i < editorFields.length; i++) {
 
   // 组装运行结果显示器
   resultField.className = 'field';
-  resultField.className = 'result-field';
   resultTitle.className = 'result-title';
   resultTitleText.innerHTML = '运行结果';
   resultWrapper.className = 'result-wrapper';
@@ -69,7 +70,6 @@ for (let i = 0; i < editorFields.length; i++) {
     lineWrapping: true
   })
   codeEditors.push(codeEditor);
-  let initCode = '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\">\r\n<title>海里睡人<\/title>\r\n<\/head>\r\n<body>\r\n6666\r\n<\/body>\r\n<\/html>\r\n';
   codeEditor.getDoc().setValue(initCode);
   exec(i);
 }
