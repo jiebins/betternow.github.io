@@ -18,7 +18,7 @@ let editorFields = document.getElementsByClassName('editor-field');
 let codeEditors = []
 
 for (let i = 0; i < editorFields.length; i++) {
-  let initCode = editorFields[i].children[0].innerHTML.replace(' ', '');
+  let initCode = editorFields[i].children[0].innerHTML;
   editorFields[i].innerHTML = '';
   // 新建代码编辑器相关元素
   let contentField = document.createElement('div');
