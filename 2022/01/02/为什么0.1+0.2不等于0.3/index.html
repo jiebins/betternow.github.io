@@ -1,0 +1,221 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>为什么0.1+0.2不等于0.3？ | 海里睡人</title><meta name="keywords" content="前端开发,JavaScript"><meta name="author" content="海里睡人"><meta name="copyright" content="海里睡人"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="由于JavaScript使用IEEE 754格式来表示数值类型，这个问题是由这个表示方法引起的，因此我们从IEEE 754格式表示方法出发逐步回答这一问题。 IEEE 754介绍IEEE 754定义了浮点数在计算机中的表示格式。一个浮点数可以用类似科学记数法的格式进行表示。 (-1)^S×M×2^E符号位S符号位S决定浮点数是正数（S&#x3D;0）还是负数（S&#x3D;1）。 指数位E指数位E可以为正也可以为负，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="为什么0.1+0.2不等于0.3？">
+<meta property="og:url" content="https://jiebins.github.io/betternow.github.io/2022/01/02/%E4%B8%BA%E4%BB%80%E4%B9%880.1+0.2%E4%B8%8D%E7%AD%89%E4%BA%8E0.3/index.html">
+<meta property="og:site_name" content="海里睡人">
+<meta property="og:description" content="由于JavaScript使用IEEE 754格式来表示数值类型，这个问题是由这个表示方法引起的，因此我们从IEEE 754格式表示方法出发逐步回答这一问题。 IEEE 754介绍IEEE 754定义了浮点数在计算机中的表示格式。一个浮点数可以用类似科学记数法的格式进行表示。 (-1)^S×M×2^E符号位S符号位S决定浮点数是正数（S&#x3D;0）还是负数（S&#x3D;1）。 指数位E指数位E可以为正也可以为负，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jiebins.github.io/betternow.github.io/img/babara.png">
+<meta property="article:published_time" content="2022-01-02T14:36:00.000Z">
+<meta property="article:modified_time" content="2022-01-02T14:36:51.265Z">
+<meta property="article:author" content="海里睡人">
+<meta property="article:tag" content="前端开发">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jiebins.github.io/betternow.github.io/img/babara.png"><link rel="shortcut icon" href="/betternow.github.io/img/favicon1.png"><link rel="canonical" href="https://jiebins.github.io/betternow.github.io/2022/01/02/%E4%B8%BA%E4%BB%80%E4%B9%880.1+0.2%E4%B8%8D%E7%AD%89%E4%BA%8E0.3/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/betternow.github.io/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/betternow.github.io/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '为什么0.1+0.2不等于0.3？',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-01-02 22:36:51'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/betternow.github.io/css/mouse.css"><link rel="stylesheet" href="/betternow.github.io/css/footer.css"><link rel="stylesheet" href="/betternow.github.io/css/editor.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.64.0/codemirror.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.64.0/theme/idea.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bttn.css/0.2.4/bttn.min.css"><link rel="stylesheet" href="APlayer.min.css"><div id="aplayer"></div><script src="https://cdn.jsdelivr.net/gh/radium-bit/res@master/live2d/autoload.js" async></script><script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js" async></script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/betternow.github.io/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/betternow.github.io/archives/"><div class="headline">文章</div><div class="length-num">8</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/betternow.github.io/tags/"><div class="headline">标签</div><div class="length-num">6</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/betternow.github.io/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/betternow.github.io/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/betternow.github.io/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/betternow.github.io/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/betternow.github.io/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/betternow.github.io/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/betternow.github.io/img/babara.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/betternow.github.io/">海里睡人</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/betternow.github.io/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/betternow.github.io/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/betternow.github.io/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/betternow.github.io/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/betternow.github.io/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/betternow.github.io/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">为什么0.1+0.2不等于0.3？</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-01-02T14:36:00.000Z" title="发表于 2022-01-02 22:36:00">2022-01-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-01-02T14:36:51.265Z" title="更新于 2022-01-02 22:36:51">2022-01-02</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="为什么0.1+0.2不等于0.3？"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>由于JavaScript使用IEEE 754格式来表示数值类型，这个问题是由这个表示方法引起的，因此我们从IEEE 754格式表示方法出发逐步回答这一问题。</p>
+<h1 id="IEEE-754介绍"><a href="#IEEE-754介绍" class="headerlink" title="IEEE 754介绍"></a>IEEE 754介绍</h1><p>IEEE 754定义了浮点数在计算机中的表示格式。一个浮点数可以用类似科学记数法的格式进行表示。</p>
+<script type="math/tex; mode=display">(-1)^S×M×2^E</script><h3 id="符号位S"><a href="#符号位S" class="headerlink" title="符号位S"></a>符号位S</h3><p>符号位S决定浮点数是正数（S=0）还是负数（S=1）。</p>
+<h3 id="指数位E"><a href="#指数位E" class="headerlink" title="指数位E"></a>指数位E</h3><p>指数位E可以为正也可以为负，为了在浮点数运算中不用计算太多的补码（负数用补码表示），实际的指数值会加上一个偏置值Bias再进行存储，单精度数的Bias为127，双精度为1023，因此指数的取值范围为：单精度-126~+127，双精度为-1022~+1023。指数位E决定浮点数的范围。</p>
+<h3 id="有效数字位M"><a href="#有效数字位M" class="headerlink" title="有效数字位M"></a>有效数字位M</h3><p>有效数字位M是二进制小数，有效数字位M决定浮点数的精度。</p>
+<p>JavaScript中浮点数是双精度浮点数，共64位，其中第0到51位（共52位）存储有效数字位，第52到62位存储指数位，第63位存储符号位，存储方式如下图。</p>
+<p><img src="http://m.biancheng.net/uploads/allimg/180905/2-1PZ511303I10.jpg"></p>
+<h1 id="十进制浮点数化二进制浮点数"><a href="#十进制浮点数化二进制浮点数" class="headerlink" title="十进制浮点数化二进制浮点数"></a>十进制浮点数化二进制浮点数</h1><p>要使用IEEE 754格式表示浮点数，我们需要先将十进制的浮点数化为二进制浮点数。转化的步骤如下</p>
+<h2 id="整数部分转化为二进制"><a href="#整数部分转化为二进制" class="headerlink" title="整数部分转化为二进制"></a>整数部分转化为二进制</h2><p>十进制整数化二进制整数的方法为：除2倒取余数。用2去除十进制整数，可以得到商和余数，再用2去除商，又能得到一个新的商和余数，如此进行直至商为0，最后将余数从后向前排列就能得到结果。</p>
+<h2 id="小数部分转化为二进制"><a href="#小数部分转化为二进制" class="headerlink" title="小数部分转化为二进制"></a>小数部分转化为二进制</h2><p>十进制小数化二进制小数的方法为：乘2取整数部分。将十进制小数乘2后取整数部分，剩下的小数部分继续进行乘2运算，直至小数部分为0，最后将整数部分从前向后排列就能得到结果。</p>
+<h2 id="合并整数部分与小数部分"><a href="#合并整数部分与小数部分" class="headerlink" title="合并整数部分与小数部分"></a>合并整数部分与小数部分</h2><p>将整数部分和小数部分像十进制浮点数一样合并在一块，用小数点分隔。</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p>下面举个例子演示一下以上步骤。对于十进制浮点数10.625，先将整数部分10化为二进制。</p>
+<ul>
+<li>10÷2=5……0</li>
+<li>5÷2=2……1</li>
+<li>2÷2=1……0</li>
+<li>1÷2=0……1</li>
+</ul>
+<p>所以10的二进制表示为1010。再将小数部分0.625化为二进制。</p>
+<ul>
+<li>0.625×2=1.25 （整数部分1，小数部分0.25）</li>
+<li>0.25×2=0.5（整数部分0，小数部分0.5）</li>
+<li>0.5×2=1（整数部分1，小数部分0）</li>
+</ul>
+<p>所以0.625的二进制表示为0.101。将整数部分和小数部分合并，得到10.625的二进制表示为1010.101。</p>
+<h1 id="IEEE-754格式转化"><a href="#IEEE-754格式转化" class="headerlink" title="IEEE 754格式转化"></a>IEEE 754格式转化</h1><p>IEEE 754的格式化值中有效数字的范围M为1&lt;=M&lt;2，因此IEEE 754格式化值的首位总为1，在存储的时候不需要显式表示出来。根据上述说法，对于双精度十进制数10.625，可以表示为1.010101×2^3。存储时符号位为0，指数位为3+1023=1026，有效数字位为010101后面用0补齐(第一位的1省略)，最终存到计算机的格式如下。</p>
+<pre><code>0 10000000010 0101010000000000000000000000000000000000000000000000
+</code></pre><h1 id="0-1-0-2的计算"><a href="#0-1-0-2的计算" class="headerlink" title="0.1+0.2的计算"></a>0.1+0.2的计算</h1><p>按照浮点数的运算规则，浮点数运算需进行五个步骤——对阶、尾数计算、结果规格化、舍入和溢出判断。下面按照这五个步骤来计算0.1+0.2。</p>
+<h2 id="对阶"><a href="#对阶" class="headerlink" title="对阶"></a>对阶</h2><p>先将0.1和0.2化为IEEE 754标准形式再进行对阶。经计算可知0.1和0.2化为二进制时是无限循环小数，0.1为$1.1001(1001)×2^(-4)$，0.2为$1.1001(1001)×2^(-3)$。由于运算的精度有限（假设都是双精度浮点数，64位），需要对小数进行截断和舍入，舍入规则是向偶数舍入，即舍入位如果是偶数就直接舍去不进位，是奇数就进位。舍入后0.1表示为</p>
+<pre><code>0 01111111011 1001100110011001100110011001100110011001100110011010
+</code></pre><p>0.2表示为</p>
+<pre><code>0 01111111100 1001100110011001100110011001100110011001100110011010
+</code></pre><p>接着进行对阶，对阶的原则是<strong>小阶对大阶</strong>，即指数小的通过调整有效数字的小数点位置使得指数与指数大的相同，同时还要对指数小的浮点数的有效数字进行舍入。0.1的指数比0.2小1，所以需要对0.1的有效数字右移一位，指数加1。</p>
+<p>对阶后的0.1表示为</p>
+<pre><code>0 01111111100 1100110011001100110011001100110011001100110011001101。
+</code></pre><h2 id="尾数计算"><a href="#尾数计算" class="headerlink" title="尾数计算"></a>尾数计算</h2><p>将0.1和0.2的有效数字部分相加，即</p>
+<pre><code>    0.1100110011001100110011001100110011001100110011001101
++
+     1.1001100110011001100110011001100110011001100110011010
+= 
+   10.0110011001100110011001100110011001100110011001100111
+</code></pre><h2 id="结果规格化"><a href="#结果规格化" class="headerlink" title="结果规格化"></a>结果规格化</h2><p>可以看到尾数计算的结果已经大于2，需要将小数点左移1位，指数+1，得到结果为</p>
+<pre><code>0 01111111101 0011001100110011001100110011001100110011001100110100
+</code></pre><h2 id="溢出判断"><a href="#溢出判断" class="headerlink" title="溢出判断"></a>溢出判断</h2><p>最后检查指数位是否溢出，指数位显然没有溢出，因此运算结束。</p>
+<h2 id="结果化简"><a href="#结果化简" class="headerlink" title="结果化简"></a>结果化简</h2><p>单从二进制浮点数来看并不能看出结果是否为0.3，我们先将结果化为科学计数法的标准形式，即$1.0011….(0011)0100×2^(-2)$，化为十进制，即$2^(-2)+2^(-5)+2^(-6)+2^(-9)+2^(-10)+…+2^(-49)+2^(-50)+2^(-52)=0.30000000000000004440892098500626$，由于JavaScript中浮点数只能精确到17位，所以得到的结果为0.30000000000000004。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>本文从IEEE754标准的定义、进制转换、浮点数计算三个方面依次介绍了计算0.1+0.2所用到的方法，并逐步计算出0.1+0.2=0.30000000000000004这一结果。之所以会出现0.1+0.2不等于0.3的情况正是因为浮点数在计算机中存储存在舍入误差，这个误差会在后续的运算中被放大，因此在JavaScript中比较数值大小时尽量不要测试某个特定的浮点数值。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">海里睡人</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://jiebins.github.io/betternow.github.io/2022/01/02/%E4%B8%BA%E4%BB%80%E4%B9%880.1+0.2%E4%B8%8D%E7%AD%89%E4%BA%8E0.3/">https://jiebins.github.io/betternow.github.io/2022/01/02/%E4%B8%BA%E4%BB%80%E4%B9%880.1+0.2%E4%B8%8D%E7%AD%89%E4%BA%8E0.3/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://jiebins.github.io/betternow.github.io" target="_blank">海里睡人</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/betternow.github.io/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">前端开发</a><a class="post-meta__tags" href="/betternow.github.io/tags/JavaScript/">JavaScript</a></div><div class="post_share"><div class="social-share" data-image="/betternow.github.io/img/babara.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/betternow.github.io/2021/12/05/JavaScript%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%80%EF%BC%89/"><img class="next-cover" src="/betternow.github.io/img/babara.png" onerror="onerror=null;src='/betternow.github.io/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">JavaScript语言基础（一）——语法与变量声明</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/betternow.github.io/2021/12/03/JavaScript%E7%AE%80%E4%BB%8B/" title="JavaScript简介"><img class="cover" src="/betternow.github.io/img/babara.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-03</div><div class="title">JavaScript简介</div></div></a></div><div><a href="/betternow.github.io/2021/12/05/JavaScript%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%80%EF%BC%89/" title="JavaScript语言基础（一）——语法与变量声明"><img class="cover" src="/betternow.github.io/img/babara.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-05</div><div class="title">JavaScript语言基础（一）——语法与变量声明</div></div></a></div><div><a href="/betternow.github.io/2021/12/03/JavaScript%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%EF%BC%88%E4%BA%8C%EF%BC%89/" title="JavaScript语言基础（二）——数据类型"><img class="cover" src="/betternow.github.io/img/babara.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-03</div><div class="title">JavaScript语言基础（二）——数据类型</div></div></a></div><div><a href="/betternow.github.io/2021/11/30/HTML%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" title="HTML基础语法"><img class="cover" src="/betternow.github.io/img/babara.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-11-30</div><div class="title">HTML基础语法</div></div></a></div><div><a href="/betternow.github.io/2021/12/01/%E5%B8%B8%E7%94%A8HTML%E6%A0%87%E7%AD%BE%E5%8F%8A%E5%85%B6%E5%B1%9E%E6%80%A7%E4%BB%8B%E7%BB%8D/" title="常用HTML标签及其属性介绍"><img class="cover" src="/betternow.github.io/img/babara.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-01</div><div class="title">常用HTML标签及其属性介绍</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="lv-container" data-id="city" data-uid="MTAyMC81NDg1My8zMTMyMg=="></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/betternow.github.io/img/avatar.jpg" onerror="this.onerror=null;this.src='/betternow.github.io/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">海里睡人</div><div class="author-info__description">你我注定能拥有彼此付出的温柔</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/betternow.github.io/archives/"><div class="headline">文章</div><div class="length-num">8</div></a></div><div class="card-info-data-item is-center"><a href="/betternow.github.io/tags/"><div class="headline">标签</div><div class="length-num">6</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#IEEE-754%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">IEEE 754介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%A6%E5%8F%B7%E4%BD%8DS"><span class="toc-number">1.0.1.</span> <span class="toc-text">符号位S</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E6%95%B0%E4%BD%8DE"><span class="toc-number">1.0.2.</span> <span class="toc-text">指数位E</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E6%95%88%E6%95%B0%E5%AD%97%E4%BD%8DM"><span class="toc-number">1.0.3.</span> <span class="toc-text">有效数字位M</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E8%BF%9B%E5%88%B6%E6%B5%AE%E7%82%B9%E6%95%B0%E5%8C%96%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%B5%AE%E7%82%B9%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text">十进制浮点数化二进制浮点数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E6%95%B0%E9%83%A8%E5%88%86%E8%BD%AC%E5%8C%96%E4%B8%BA%E4%BA%8C%E8%BF%9B%E5%88%B6"><span class="toc-number">2.1.</span> <span class="toc-text">整数部分转化为二进制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E6%95%B0%E9%83%A8%E5%88%86%E8%BD%AC%E5%8C%96%E4%B8%BA%E4%BA%8C%E8%BF%9B%E5%88%B6"><span class="toc-number">2.2.</span> <span class="toc-text">小数部分转化为二进制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E6%95%B4%E6%95%B0%E9%83%A8%E5%88%86%E4%B8%8E%E5%B0%8F%E6%95%B0%E9%83%A8%E5%88%86"><span class="toc-number">2.3.</span> <span class="toc-text">合并整数部分与小数部分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-number">2.4.</span> <span class="toc-text">例子</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IEEE-754%E6%A0%BC%E5%BC%8F%E8%BD%AC%E5%8C%96"><span class="toc-number">3.</span> <span class="toc-text">IEEE 754格式转化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0-1-0-2%E7%9A%84%E8%AE%A1%E7%AE%97"><span class="toc-number">4.</span> <span class="toc-text">0.1+0.2的计算</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E9%98%B6"><span class="toc-number">4.1.</span> <span class="toc-text">对阶</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%BE%E6%95%B0%E8%AE%A1%E7%AE%97"><span class="toc-number">4.2.</span> <span class="toc-text">尾数计算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%9C%E8%A7%84%E6%A0%BC%E5%8C%96"><span class="toc-number">4.3.</span> <span class="toc-text">结果规格化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BA%A2%E5%87%BA%E5%88%A4%E6%96%AD"><span class="toc-number">4.4.</span> <span class="toc-text">溢出判断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%9C%E5%8C%96%E7%AE%80"><span class="toc-number">4.5.</span> <span class="toc-text">结果化简</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/betternow.github.io/2022/01/02/%E4%B8%BA%E4%BB%80%E4%B9%880.1+0.2%E4%B8%8D%E7%AD%89%E4%BA%8E0.3/" title="为什么0.1+0.2不等于0.3？"><img src="/betternow.github.io/img/babara.png" onerror="this.onerror=null;this.src='/betternow.github.io/img/404.jpg'" alt="为什么0.1+0.2不等于0.3？"/></a><div class="content"><a class="title" href="/betternow.github.io/2022/01/02/%E4%B8%BA%E4%BB%80%E4%B9%880.1+0.2%E4%B8%8D%E7%AD%89%E4%BA%8E0.3/" title="为什么0.1+0.2不等于0.3？">为什么0.1+0.2不等于0.3？</a><time datetime="2022-01-02T14:36:00.000Z" title="发表于 2022-01-02 22:36:00">2022-01-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/betternow.github.io/2021/12/05/JavaScript%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%80%EF%BC%89/" title="JavaScript语言基础（一）——语法与变量声明"><img src="/betternow.github.io/img/babara.png" onerror="this.onerror=null;this.src='/betternow.github.io/img/404.jpg'" alt="JavaScript语言基础（一）——语法与变量声明"/></a><div class="content"><a class="title" href="/betternow.github.io/2021/12/05/JavaScript%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%80%EF%BC%89/" title="JavaScript语言基础（一）——语法与变量声明">JavaScript语言基础（一）——语法与变量声明</a><time datetime="2021-12-05T14:10:00.000Z" title="发表于 2021-12-05 22:10:00">2021-12-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/betternow.github.io/2021/12/03/JavaScript%E7%AE%80%E4%BB%8B/" title="JavaScript简介"><img src="/betternow.github.io/img/babara.png" onerror="this.onerror=null;this.src='/betternow.github.io/img/404.jpg'" alt="JavaScript简介"/></a><div class="content"><a class="title" href="/betternow.github.io/2021/12/03/JavaScript%E7%AE%80%E4%BB%8B/" title="JavaScript简介">JavaScript简介</a><time datetime="2021-12-03T09:17:00.000Z" title="发表于 2021-12-03 17:17:00">2021-12-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/betternow.github.io/2021/12/03/JavaScript%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%EF%BC%88%E4%BA%8C%EF%BC%89/" title="JavaScript语言基础（二）——数据类型"><img src="/betternow.github.io/img/babara.png" onerror="this.onerror=null;this.src='/betternow.github.io/img/404.jpg'" alt="JavaScript语言基础（二）——数据类型"/></a><div class="content"><a class="title" href="/betternow.github.io/2021/12/03/JavaScript%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%EF%BC%88%E4%BA%8C%EF%BC%89/" title="JavaScript语言基础（二）——数据类型">JavaScript语言基础（二）——数据类型</a><time datetime="2021-12-03T04:41:00.000Z" title="发表于 2021-12-03 12:41:00">2021-12-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/betternow.github.io/2021/12/01/%E5%B8%B8%E7%94%A8HTML%E6%A0%87%E7%AD%BE%E5%8F%8A%E5%85%B6%E5%B1%9E%E6%80%A7%E4%BB%8B%E7%BB%8D/" title="常用HTML标签及其属性介绍"><img src="/betternow.github.io/img/babara.png" onerror="this.onerror=null;this.src='/betternow.github.io/img/404.jpg'" alt="常用HTML标签及其属性介绍"/></a><div class="content"><a class="title" href="/betternow.github.io/2021/12/01/%E5%B8%B8%E7%94%A8HTML%E6%A0%87%E7%AD%BE%E5%8F%8A%E5%85%B6%E5%B1%9E%E6%80%A7%E4%BB%8B%E7%BB%8D/" title="常用HTML标签及其属性介绍">常用HTML标签及其属性介绍</a><time datetime="2021-12-01T04:00:00.000Z" title="发表于 2021-12-01 12:00:00">2021-12-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 海里睡人</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/betternow.github.io/js/utils.js"></script><script src="/betternow.github.io/js/main.js"></script><div class="js-pjax"><script>function loadLivere () {
+  if (typeof LivereTower === 'object') {
+    window.LivereTower.init()
+  }
+  else {
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  }
+}
+
+if ('Livere' === 'Livere' || !false) {
+  if (false) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+  else loadLivere()
+}
+else {
+  function loadOtherComment () {
+    loadLivere()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="122524667" data-server="netease" data-type="album" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="false" muted></div><script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.64.0/codemirror.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.64.0/mode/htmlmixed/htmlmixed.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.64.0/mode/css/css.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.64.0/mode/javascript/javascript.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.64.0/mode/xml/xml.min.js"></script><script src="/betternow.github.io/js/codeEditorGenerator.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
